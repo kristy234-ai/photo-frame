@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Frame Setup</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #333; }
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: #007acc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Raspberry Pi Photo Frame</h1>
+  {% if configured %}
+    <p>The device has been configured and authorised.  Your photos will display
+    automatically on the Inky Impression.  You may close this page.</p>
+  {% else %}
+    <p>This device is not yet configured.  To allow it to access your Google
+    Photos library please click the button below and complete the consent
+    flow.</p>
+    <a class="button" href="{{ url_for('google_auth') }}">Authorize Google Photos</a>
+  {% endif %}
+</body>
+</html>
